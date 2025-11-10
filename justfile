@@ -1,7 +1,7 @@
 # Format all Python code and Markdown documentation
 format:
     uv run ruff format .
-    uv run mdformat .
+    prettier --write "**/*.md"
 
 # Lint Python code for errors
 lint:
