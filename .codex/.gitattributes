@@ -1,0 +1,7 @@
+# Tell git to never touch these files during merges/checkouts
+config.toml -diff -merge
+auth.json -diff -merge
+version.json -diff -merge
+log/* -diff -merge
+history.jsonl -diff -merge
+sessions/* -diff -merge

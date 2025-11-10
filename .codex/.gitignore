@@ -1,0 +1,11 @@
+# Ignore sensitive files and logs
+config.toml
+auth.json
+version.json
+log/
+history.jsonl
+sessions/
+session-log.jsonl
+
+# Ignore WIP Prompts
+/prompts/wip-archive
