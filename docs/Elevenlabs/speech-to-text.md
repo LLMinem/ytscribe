@@ -1,4 +1,4 @@
-______________________________________________________________________
+---
 
 ## title: Speech to Text subtitle: Learn how to turn spoken audio into text with ElevenLabs.
 
@@ -46,26 +46,26 @@ The Scribe v1 model is best used for when high-accuracy transcription is require
 <Tabs>
   <Tab title="Developer API">
 
-| Tier | Price/month | Hours included | Price per included hour | Price per additional hour |
+| Tier     | Price/month | Hours included      | Price per included hour | Price per additional hour |
 | -------- | ----------- | ------------------- | ----------------------- | ------------------------- |
-| Free | $0 | Unavailable | Unavailable | Unavailable |
-| Starter | $5 | 12 hours 30 minutes | $0.40 | Unavailable |
-| Creator | $22 | 62 hours 51 minutes | $0.35 | $0.48 |
-| Pro | $99 | 300 hours | $0.33 | $0.40 |
-| Scale | $330 | 1,100 hours | $0.30 | $0.33 |
-| Business | $1,320 | 6,000 hours | $0.22 | $0.22 |
+| Free     | $0          | Unavailable         | Unavailable             | Unavailable               |
+| Starter  | $5          | 12 hours 30 minutes | $0.40                   | Unavailable               |
+| Creator  | $22         | 62 hours 51 minutes | $0.35                   | $0.48                     |
+| Pro      | $99         | 300 hours           | $0.33                   | $0.40                     |
+| Scale    | $330        | 1,100 hours         | $0.30                   | $0.33                     |
+| Business | $1,320      | 6,000 hours         | $0.22                   | $0.22                     |
 
 </Tab>
   <Tab title="Product interface pricing">
 
-| Tier | Price/month | Hours included | Price per included hour |
+| Tier     | Price/month | Hours included  | Price per included hour |
 | -------- | ----------- | --------------- | ----------------------- |
-| Free | $0 | 12 minutes | Unavailable |
-| Starter | $5 | 1 hour | $5 |
-| Creator | $22 | 4 hours 53 min | $4.5 |
-| Pro | $99 | 24 hours 45 min | $4 |
-| Scale | $330 | 94 hours 17 min | $3.5 |
-| Business | $1,320 | 440 hours | $3 |
+| Free     | $0          | 12 minutes      | Unavailable             |
+| Starter  | $5          | 1 hour          | $5                      |
+| Creator  | $22         | 4 hours 53 min  | $4.5                    |
+| Pro      | $99         | 24 hours 45 min | $4                      |
+| Scale    | $330        | 94 hours 17 min | $3.5                    |
+| Business | $1,320      | 440 hours       | $3                      |
 
 </Tab>
 
@@ -82,15 +82,15 @@ The Scribe v1 model is best used for when high-accuracy transcription is require
 Scribe has higher concurrency limits than other services from ElevenLabs.
 Please see other concurrency limits [here](/docs/models#concurrency-and-priority)
 
-| Plan | STT Concurrency Limit |
+| Plan       | STT Concurrency Limit |
 | ---------- | --------------------- |
-| Free | 8 |
-| Starter | 12 |
-| Creator | 20 |
-| Pro | 40 |
-| Scale | 60 |
-| Business | 60 |
-| Enterprise | Elevated |
+| Free       | 8                     |
+| Starter    | 12                    |
+| Creator    | 20                    |
+| Pro        | 40                    |
+| Scale      | 60                    |
+| Business   | 60                    |
+| Enterprise | Elevated              |
 
 ## Examples
 

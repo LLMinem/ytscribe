@@ -6,7 +6,6 @@ Markdown Content:
 yt-dlp is a feature-rich command-line audio/video downloader with support for [thousands of sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md). The project is a fork of [youtube-dl](https://github.com/ytdl-org/youtube-dl) based on the now inactive [youtube-dlc](https://github.com/blackjack4494/yt-dlc).
 
 - [INSTALLATION](https://github.com/yt-dlp/yt-dlp#installation)
-
   - [Detailed instructions](https://github.com/yt-dlp/yt-dlp/wiki/Installation)
   - [Release Files](https://github.com/yt-dlp/yt-dlp#release-files)
   - [Update](https://github.com/yt-dlp/yt-dlp#update)
@@ -14,7 +13,6 @@ yt-dlp is a feature-rich command-line audio/video downloader with support for [t
   - [Compile](https://github.com/yt-dlp/yt-dlp#compile)
 
 - [USAGE AND OPTIONS](https://github.com/yt-dlp/yt-dlp#usage-and-options)
-
   - [General Options](https://github.com/yt-dlp/yt-dlp#general-options)
   - [Network Options](https://github.com/yt-dlp/yt-dlp#network-options)
   - [Geo-restriction](https://github.com/yt-dlp/yt-dlp#geo-restriction)
@@ -34,49 +32,40 @@ yt-dlp is a feature-rich command-line audio/video downloader with support for [t
   - [Preset Aliases](https://github.com/yt-dlp/yt-dlp#preset-aliases)
 
 - [CONFIGURATION](https://github.com/yt-dlp/yt-dlp#configuration)
-
   - [Configuration file encoding](https://github.com/yt-dlp/yt-dlp#configuration-file-encoding)
   - [Authentication with netrc](https://github.com/yt-dlp/yt-dlp#authentication-with-netrc)
   - [Notes about environment variables](https://github.com/yt-dlp/yt-dlp#notes-about-environment-variables)
 
 - [OUTPUT TEMPLATE](https://github.com/yt-dlp/yt-dlp#output-template)
-
   - [Output template examples](https://github.com/yt-dlp/yt-dlp#output-template-examples)
 
 - [FORMAT SELECTION](https://github.com/yt-dlp/yt-dlp#format-selection)
-
   - [Filtering Formats](https://github.com/yt-dlp/yt-dlp#filtering-formats)
   - [Sorting Formats](https://github.com/yt-dlp/yt-dlp#sorting-formats)
   - [Format Selection examples](https://github.com/yt-dlp/yt-dlp#format-selection-examples)
 
 - [MODIFYING METADATA](https://github.com/yt-dlp/yt-dlp#modifying-metadata)
-
   - [Modifying metadata examples](https://github.com/yt-dlp/yt-dlp#modifying-metadata-examples)
 
 - [EXTRACTOR ARGUMENTS](https://github.com/yt-dlp/yt-dlp#extractor-arguments)
 
 - [PLUGINS](https://github.com/yt-dlp/yt-dlp#plugins)
-
   - [Installing Plugins](https://github.com/yt-dlp/yt-dlp#installing-plugins)
   - [Developing Plugins](https://github.com/yt-dlp/yt-dlp#developing-plugins)
 
 - [EMBEDDING YT-DLP](https://github.com/yt-dlp/yt-dlp#embedding-yt-dlp)
-
   - [Embedding examples](https://github.com/yt-dlp/yt-dlp#embedding-examples)
 
 - [CHANGES FROM YOUTUBE-DL](https://github.com/yt-dlp/yt-dlp#changes-from-youtube-dl)
-
   - [New features](https://github.com/yt-dlp/yt-dlp#new-features)
   - [Differences in default behavior](https://github.com/yt-dlp/yt-dlp#differences-in-default-behavior)
   - [Deprecated options](https://github.com/yt-dlp/yt-dlp#deprecated-options)
 
 - [CONTRIBUTING](https://github.com/yt-dlp/yt-dlp/blob/master/CONTRIBUTING.md#contributing-to-yt-dlp)
-
   - [Opening an Issue](https://github.com/yt-dlp/yt-dlp/blob/master/CONTRIBUTING.md#opening-an-issue)
   - [Developer Instructions](https://github.com/yt-dlp/yt-dlp/blob/master/CONTRIBUTING.md#developer-instructions)
 
 - [WIKI](https://github.com/yt-dlp/yt-dlp/wiki)
-
   - [FAQ](https://github.com/yt-dlp/yt-dlp/wiki/FAQ)
 
 ## INSTALLATION
@@ -520,7 +509,7 @@ Tip: Use `CTRL`+`F` (or `Command`+`F`) to search by keywords
 --max-filesize SIZE             Abort download if filesize is larger than
                                 SIZE, e.g. 50k or 44.6M
 --date DATE                     Download only videos uploaded on this date.
-                                The date can be "YYYYMMDD" or in the format 
+                                The date can be "YYYYMMDD" or in the format
                                 [now|today|yesterday][-N[day|week|month|year]].
                                 E.g. "--date today-2weeks" downloads only
                                 videos uploaded on the same day two weeks ago
@@ -1274,21 +1263,21 @@ You can configure yt-dlp by placing any supported command line option in a confi
 *   The file given to `--config-location`
 ```
 
-2. **Portable Configuration**: (Recommended for portable installations)
+1. **Portable Configuration**: (Recommended for portable installations)
 
 ```
 *   If using a binary, `yt-dlp.conf` in the same directory as the binary
 *   If running from source-code, `yt-dlp.conf` in the parent directory of `yt_dlp`
 ```
 
-3. **Home Configuration**:
+1. **Home Configuration**:
 
 ```
 *   `yt-dlp.conf` in the home path given to `-P`
 *   If `-P` is not given, the current directory is searched
 ```
 
-4. **User Configuration**:
+1. **User Configuration**:
 
 ```
 *   `${XDG_CONFIG_HOME}/yt-dlp.conf`
@@ -1305,7 +1294,7 @@ You can configure yt-dlp by placing any supported command line option in a confi
 
 See also: [Notes about environment variables](https://github.com/yt-dlp/yt-dlp#notes-about-environment-variables)
 
-5. **System Configuration**:
+1. **System Configuration**:
 
 ```
 *   `/etc/yt-dlp.conf`
@@ -1876,7 +1865,7 @@ $ yt-dlp -f "b" -S "filesize~50M"
 
 # or the best video available via any protocol if there is no such video
 
-$ yt-dlp -f "(bv\*+ba/b)[protocol^=http]\[protocol!*=dash\] / (bv*+ba/b)"
+$ yt-dlp -f "(bv\*+ba/b)[protocol^=http]\[protocol!_=dash\] / (bv_+ba/b)"
 
 # Download best video available via the best protocol
 
@@ -1947,24 +1936,24 @@ This option also has a few special uses:
 
 For reference, these are the fields yt-dlp adds by default to the file metadata:
 
-| Metadata fields | From |
-| --- | --- |
-| `title` | `track` or `title` |
-| `date` | `upload_date` |
-| `description`, `synopsis` | `description` |
-| `purl`, `comment` | `webpage_url` |
-| `track` | `track_number` |
-| `artist` | `artist`, `artists`, `creator`, `creators`, `uploader` or `uploader_id` |
-| `composer` | `composer` or `composers` |
-| `genre` | `genre` or `genres` |
-| `album` | `album` |
-| `album_artist` | `album_artist` or `album_artists` |
-| `disc` | `disc_number` |
-| `show` | `series` |
-| `season_number` | `season_number` |
-| `episode_id` | `episode` or `episode_id` |
-| `episode_sort` | `episode_number` |
-| `language` of each stream | the format's `language` |
+| Metadata fields           | From                                                                    |
+| ------------------------- | ----------------------------------------------------------------------- |
+| `title`                   | `track` or `title`                                                      |
+| `date`                    | `upload_date`                                                           |
+| `description`, `synopsis` | `description`                                                           |
+| `purl`, `comment`         | `webpage_url`                                                           |
+| `track`                   | `track_number`                                                          |
+| `artist`                  | `artist`, `artists`, `creator`, `creators`, `uploader` or `uploader_id` |
+| `composer`                | `composer` or `composers`                                               |
+| `genre`                   | `genre` or `genres`                                                     |
+| `album`                   | `album`                                                                 |
+| `album_artist`            | `album_artist` or `album_artists`                                       |
+| `disc`                    | `disc_number`                                                           |
+| `show`                    | `series`                                                                |
+| `season_number`           | `season_number`                                                         |
+| `episode_id`              | `episode` or `episode_id`                                               |
+| `episode_sort`            | `episode_number`                                                        |
+| `language` of each stream | the format's `language`                                                 |
 
 **Note**: The file format may not support some of these fields
 
@@ -2038,7 +2027,6 @@ The following extractors use this feature:
 - `comment_sort`: `top` or `new` (default) - choose comment sorting mode (on YouTube's side)
 
 - `max_comments`: Limit the amount of comments to gather. Comma-separated list of integers representing `max-comments,max-parents,max-replies,max-replies-per-thread`. Default is `all,all,all,all`
-
   - E.g. `all,all,1000,10` will get a maximum of 1000 replies total, with up to 10 replies per thread. `1000,all,100` will get a maximum of 1000 comments, with a maximum of 100 replies total
 
 - `formats`: Change the types of formats to return. `dashy` (convert HTTP to DASH), `duplicate` (identical content but different URLs or protocol; includes `dashy`), `incomplete` (cannot be downloaded completely - live dash and post-live m3u8), `missing_pot` (include formats that require a PO Token but are missing one)
@@ -2284,20 +2272,20 @@ Plugins can be installed using various methods and locations.
     *   `/etc/yt-dlp-plugins/<package name>/yt_dlp_plugins/`
 ```
 
-2. **Executable location**: Plugin packages can similarly be installed in a `yt-dlp-plugins` directory under the executable location (recommended for portable installations):
+1. **Executable location**: Plugin packages can similarly be installed in a `yt-dlp-plugins` directory under the executable location (recommended for portable installations):
 
 ```
 *   Binary: where `<root-dir>/yt-dlp.exe`, `<root-dir>/yt-dlp-plugins/<package name>/yt_dlp_plugins/`
 *   Source: where `<root-dir>/yt_dlp/__main__.py`, `<root-dir>/yt-dlp-plugins/<package name>/yt_dlp_plugins/`
 ```
 
-3. **pip and other locations in `PYTHONPATH`**
+1. **pip and other locations in `PYTHONPATH`**
 
 ```
-*   Plugin packages can be installed and managed using `pip`. See [yt-dlp-sample-plugins](https://github.com/yt-dlp/yt-dlp-sample-plugins) for an example. 
+*   Plugin packages can be installed and managed using `pip`. See [yt-dlp-sample-plugins](https://github.com/yt-dlp/yt-dlp-sample-plugins) for an example.
     *   Note: plugin files between plugin packages installed with pip must have unique filenames.
 
-*   Any path in `PYTHONPATH` is searched in for the `yt_dlp_plugins` namespace folder. 
+*   Any path in `PYTHONPATH` is searched in for the `yt_dlp_plugins` namespace folder.
     *   Note: This does not apply for Pyinstaller builds.
 ```
 
@@ -2540,8 +2528,7 @@ ydl.download(URLS)
 - **Merged with animelover1984/youtube-dl**: You get most of the features and improvements from [animelover1984/youtube-dl](https://github.com/animelover1984/youtube-dl) including `--write-comments`, `BiliBiliSearch`, `BilibiliChannel`, Embedding thumbnail in mp4/ogg/opus, playlist infojson etc. See [#31](https://github.com/yt-dlp/yt-dlp/pull/31) for details.
 
 - **YouTube improvements**:
-
-  - Supports Clips, Stories (`ytstories:<channel UCID>`), Search (including filters)*****, YouTube Music Search, Channel-specific search, Search prefixes (`ytsearch:`, `ytsearchdate:`)*****, Mixes, and Feeds (`:ytfav`, `:ytwatchlater`, `:ytsubs`, `:ythistory`, `:ytrec`, `:ytnotif`)
+  - Supports Clips, Stories (`ytstories:<channel UCID>`), Search (including filters)**\***, YouTube Music Search, Channel-specific search, Search prefixes (`ytsearch:`, `ytsearchdate:`)**\***, Mixes, and Feeds (`:ytfav`, `:ytwatchlater`, `:ytsubs`, `:ythistory`, `:ytrec`, `:ytnotif`)
   - Fix for [n-sig based throttling](https://github.com/ytdl-org/youtube-dl/issues/29326)\*\*\*\*\*
   - Download livestreams from the start using `--live-from-start` (_experimental_)
   - Channel URLs download all uploads of the channel, including shorts and live

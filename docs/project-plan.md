@@ -46,34 +46,34 @@
 ## 4. Proposed workflow
 
 1. **Command interface** (e.g., `uv run ytscribe download <youtube_url> [--transcribe/--skip-transcribe]`).
-1. **Download planning**
+2. **Download planning**
    - Probe metadata with `yt_dlp.YoutubeDL({'skip_download': True})` to learn available formats.
    - Prefer format `bestaudio[abr<=70][acodec^=opus]/bestaudio` or explicitly request itag 250 if present.
    - Save under `data/audio/{playlist_title or channel}/{upload_date}_{video_id}.opus` (configurable root).
-1. **Audio normalization**
+3. **Audio normalization**
    - If the fetched stream is already Opus-in-WebM, store as-is.
    - Otherwise, run FFmpeg via yt-dlp post-processing to transcode to Opus 64k using `--audio-format opus --audio-quality 64K` to keep ElevenLabs-friendly format.
-1. **Transcription dispatcher**
+4. **Transcription dispatcher**
    - For synchronous MVP: read file bytes into memory (or stream chunked) and call `ElevenLabsClient.speech_to_text.convert` with options `model_id='scribe_v1'`, `tag_audio_events=True`, `diarize=True`, `language_code='eng'` or `None` for auto-detect.
    - For near-future: support `webhook=True` + metadata to move to async mode.
-1. **Result handling**
+5. **Result handling**
    - Persist JSON response under `data/transcripts/{same_base}.json` plus pretty `.md` or `.txt` summary.
    - For playlists, optionally collate transcripts into a single folder index.
 
 ## 5. Implementation task backlog for the next agent
 
 1. Initialize the uv project (`uv init --package ytscribe`), add base dependencies with `uv add ...`, create `uv.lock`.
-1. Add `.env.example` documenting `ELEVENLABS_API_KEY`, default download root, optional webhook data.
-1. Implement a small config module that reads `.env`/env vars and ensures `downloads/` + `transcripts/` directories exist.
-1. Wrap yt-dlp functionality in `ytscribe/downloader.py`:
+2. Add `.env.example` documenting `ELEVENLABS_API_KEY`, default download root, optional webhook data.
+3. Implement a small config module that reads `.env`/env vars and ensures `downloads/` + `transcripts/` directories exist.
+4. Wrap yt-dlp functionality in `ytscribe/downloader.py`:
    - Format selection helper (prefer itag 250; fallback order; raise actionable errors if nothing matches).
    - Playlist iteration + metadata capture (title, index, url, duration, channel).
    - Option to skip downloads that already exist (checksum by file name or `--no-overwrite`).
-1. Add `ytscribe/transcriber.py` using the ElevenLabs Python SDK (per `docs/Elevenlabs/stt-quickstart.md`). Include toggles for `tag_audio_events`, `diarize`, `language_code`, `webhook`.
-1. Build CLI entry point (Typer or argparse) that wires download + transcription steps, with flags for `--only-download`, `--only-transcribe`, `--playlist`, `--output-dir`.
-1. Provide structured logging + progress output (maybe `rich` progress bars for playlist jobs).
-1. Write docs: `README.md` usage, `docs/usage.md` with reproducible commands, `docs/troubleshooting.md` for yt-dlp/ffmpeg gotchas.
-1. (Stretch) Add simple regression tests for format selection + config parsing (pytest) and a mocked ElevenLabs uploader to avoid hitting API during CI.
+5. Add `ytscribe/transcriber.py` using the ElevenLabs Python SDK (per `docs/Elevenlabs/stt-quickstart.md`). Include toggles for `tag_audio_events`, `diarize`, `language_code`, `webhook`.
+6. Build CLI entry point (Typer or argparse) that wires download + transcription steps, with flags for `--only-download`, `--only-transcribe`, `--playlist`, `--output-dir`.
+7. Provide structured logging + progress output (maybe `rich` progress bars for playlist jobs).
+8. Write docs: `README.md` usage, `docs/usage.md` with reproducible commands, `docs/troubleshooting.md` for yt-dlp/ffmpeg gotchas.
+9. (Stretch) Add simple regression tests for format selection + config parsing (pytest) and a mocked ElevenLabs uploader to avoid hitting API during CI.
 
 ## 6. Risks & caveats
 
@@ -86,11 +86,11 @@
 ## 7. Decisions (as of 2025-11-09)
 
 1. **Execution model**: ship a synchronous flow first; CLI waits for each ElevenLabs transcript to finish. Async/webhook mode can be layered on later for high-volume playlists.
-1. **Storage layout**: keep everything under `data/audio/` and `data/transcripts/` within this repo for now.
-1. **Artifacts**: write both `.json` (raw API response) and `.md` (reader-friendly) outputs per transcription.
-1. **CLI UX**: single `ytscribe fetch <url>` command with flags for optional behaviors, no separate subcommands.
-1. **Diarization**: always enabled (`diarize=True`) in every request.
-1. **Fallbacks**: ElevenLabs is the sole transcription backend; no local/GPU alternative required.
+2. **Storage layout**: keep everything under `data/audio/` and `data/transcripts/` within this repo for now.
+3. **Artifacts**: write both `.json` (raw API response) and `.md` (reader-friendly) outputs per transcription.
+4. **CLI UX**: single `ytscribe fetch <url>` command with flags for optional behaviors, no separate subcommands.
+5. **Diarization**: always enabled (`diarize=True`) in every request.
+6. **Fallbacks**: ElevenLabs is the sole transcription backend; no local/GPU alternative required.
 
 ## 8. Reference materials on disk
 

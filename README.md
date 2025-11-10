@@ -14,9 +14,9 @@ Minimal CLI workflow for downloading YouTube audio (via yt-dlp) and transcribing
    ```bash
    uv sync
    ```
-1. **Configure secrets**
+2. **Configure secrets**
    - Copy `.env.example` to `.env` and fill `ELEVENLABS_API_KEY` (plus optional path overrides).
-1. **Project structure**
+3. **Project structure**
    - Source lives under `src/ytscribe/`.
    - Audio downloads land in `data/audio/`.
    - Transcripts land in `data/transcripts/` (both JSON + Markdown per job).

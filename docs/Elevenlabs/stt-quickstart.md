@@ -1,4 +1,4 @@
-______________________________________________________________________
+---
 
 ## title: Speech to Text quickstart subtitle: Learn how to convert spoken audio into text.
 
@@ -12,28 +12,28 @@ This guide will show you how to convert spoken audio into text using the Speech 
 
 ````
     Store the key as a managed secret and pass it to the SDKs either as a environment variable via an `.env` file, or directly in your app’s configuration depending on your preference.
-    
+
     ```js title=".env"
     ELEVENLABS_API_KEY=<your_api_key_here>
     ```
-    
+
 </Step>
 <Step title="Install the SDK">
     We'll also use the `dotenv` library to load our API key from an environment variable.
-    
+
     <CodeBlocks>
         ```python
         pip install elevenlabs
         pip install python-dotenv
         ```
-    
+
         ```typescript
         npm install @elevenlabs/elevenlabs-js
         npm install dotenv
         ```
-    
+
     </CodeBlocks>
-    
+
 </Step>
 <Step title="Make the API request">
     Create a new file named `example.py` or `example.mts`, depending on your language of choice and add the following code:
