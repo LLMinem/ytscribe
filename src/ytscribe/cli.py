@@ -9,6 +9,7 @@ import typer
 from typing_extensions import Annotated
 
 from ytscribe.config import get_config
+from ytscribe.downloader import AudioDownloader
 
 app = typer.Typer(
     name="ytscribe",
@@ -66,16 +67,33 @@ def fetch(
         typer.echo("ytscribe v0.1.0")
         typer.echo(f"URL: {url}")
         typer.echo(f"Download root: {config.download_root}")
-        typer.echo(f"Transcript root: {config.transcript_root}")
-        typer.echo(f"Skip transcribe: {skip_transcribe}")
-        typer.echo(f"Language: {language or 'auto-detect'}")
-        typer.echo(f"Tag audio events: {tag_audio_events}")
-        typer.echo(f"Diarize: {diarize}")
+        typer.echo(f"Transcript root: {config.transcript_root}\n")
 
-        typer.echo("\n[Phase 1] CLI structure initialized successfully!")
-        typer.echo(
-            "Downloader and transcriber will be implemented in subsequent phases."
-        )
+        # Initialize downloader
+        downloader = AudioDownloader(config.download_root)
+
+        # Download audio
+        try:
+            downloaded_files = downloader.download(url, skip_existing=True)
+        except Exception as e:
+            typer.secho(f"\n✗ Download failed: {e}", fg=typer.colors.RED, err=True)
+            raise typer.Exit(1)
+
+        # Summary
+        typer.echo(f"\n✓ Downloaded {len(downloaded_files)} file(s)")
+
+        if skip_transcribe:
+            typer.secho(
+                "\n⏭  Skipping transcription (--skip-transcribe)",
+                fg=typer.colors.YELLOW,
+            )
+        else:
+            typer.echo("\n[Phase 2 Complete - Phase 3 Pending]")
+            typer.echo("Transcription will be implemented in Phase 3.")
+            typer.echo("Transcription options:")
+            typer.echo(f"  Language: {language or 'auto-detect'}")
+            typer.echo(f"  Tag audio events: {tag_audio_events}")
+            typer.echo(f"  Diarize: {diarize}")
 
     except ValueError as e:
         typer.secho(f"Configuration error: {e}", fg=typer.colors.RED, err=True)
