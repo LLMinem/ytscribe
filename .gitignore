@@ -15,6 +15,9 @@ wheels/
 # macOS cruft
 .DS_Store
 
+# MCP server configuration
+.mcp.json
+
 # Project data outputs
 data/audio/*
 !data/audio/.gitkeep
