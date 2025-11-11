@@ -10,6 +10,7 @@ from typing_extensions import Annotated
 
 from ytscribe.config import get_config
 from ytscribe.downloader import AudioDownloader
+from ytscribe.transcriber import Transcriber
 
 app = typer.Typer(
     name="ytscribe",
@@ -88,12 +89,50 @@ def fetch(
                 fg=typer.colors.YELLOW,
             )
         else:
-            typer.echo("\n[Phase 2 Complete - Phase 3 Pending]")
-            typer.echo("Transcription will be implemented in Phase 3.")
-            typer.echo("Transcription options:")
-            typer.echo(f"  Language: {language or 'auto-detect'}")
-            typer.echo(f"  Tag audio events: {tag_audio_events}")
-            typer.echo(f"  Diarize: {diarize}")
+            # Transcribe downloaded files
+            typer.echo("\n🎙️  Starting transcription...\n")
+
+            transcriber = Transcriber(config)
+            success_count = 0
+            error_count = 0
+
+            for idx, audio_file in enumerate(downloaded_files, 1):
+                typer.echo(
+                    f"[{idx}/{len(downloaded_files)}] 🎙️  Transcribing: {audio_file.name}"
+                )
+
+                try:
+                    result = transcriber.transcribe(
+                        audio_path=audio_file,
+                        language=language,
+                        tag_audio_events=tag_audio_events,
+                        diarize=diarize,
+                    )
+
+                    typer.secho("  ✓ API request successful", fg=typer.colors.GREEN)
+                    typer.echo(f"  ✓ Saved: {result['json_path']}")
+                    typer.echo(f"  ✓ Saved: {result['md_path']}")
+                    success_count += 1
+
+                except Exception as e:
+                    typer.secho(f"  ✗ Error: {e}", fg=typer.colors.RED, err=True)
+                    error_count += 1
+                    # Continue with remaining files
+                    continue
+
+            # Final summary
+            typer.echo("")
+            if success_count > 0:
+                typer.secho(
+                    f"✓ Transcribed {success_count} of {len(downloaded_files)} file(s) successfully",
+                    fg=typer.colors.GREEN,
+                )
+            if error_count > 0:
+                typer.secho(
+                    f"✗ Failed to transcribe {error_count} file(s)",
+                    fg=typer.colors.RED,
+                    err=True,
+                )
 
     except ValueError as e:
         typer.secho(f"Configuration error: {e}", fg=typer.colors.RED, err=True)
