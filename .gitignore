@@ -20,3 +20,6 @@ data/audio/*
 !data/audio/.gitkeep
 data/transcripts/*
 !data/transcripts/.gitkeep
+
+# Session handoff files
+docs/session-handoff/
