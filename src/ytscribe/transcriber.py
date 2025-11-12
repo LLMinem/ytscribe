@@ -139,32 +139,8 @@ class Transcriber:
         lines.append(full_text)
         lines.append("")
 
-        # Detailed timeline with speakers
-        words = transcript_data.get("words", [])
-        if words:
-            lines.append("## Detailed Timeline\n")
-
-            current_speaker = None
-            for word in words:
-                if word.get("type") != "word":
-                    continue  # Skip spacing and audio events
-
-                speaker = word.get("speaker_id", "UNKNOWN")
-                start = word.get("start", 0)
-                end = word.get("end", 0)
-                text = word.get("text", "")
-
-                # Group consecutive words from same speaker
-                if speaker != current_speaker:
-                    timestamp_str = f"[{self._format_timestamp(start)} - {self._format_timestamp(end)}]"
-                    lines.append(f"\n{timestamp_str} **{speaker}:**")
-                    current_speaker = speaker
-
-                lines.append(text)
-
-            lines.append("")
-
         # Audio events
+        words = transcript_data.get("words", [])
         audio_events = [word for word in words if word.get("type") == "audio_event"]
         if audio_events:
             lines.append("## Audio Events\n")
