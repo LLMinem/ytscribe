@@ -1,0 +1,1 @@
+/Users/meeq/.config/opencode/superpowers/.opencode/plugin/superpowers.js
