@@ -9,6 +9,9 @@ wheels/
 # Virtual environments
 .venv
 
+# Git worktrees (local)
+.worktrees/
+
 # Environment variables with secrets
 .env
 
