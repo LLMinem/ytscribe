@@ -1,5 +1,7 @@
 # ytscribe Planning Brief
 
+> **Status:** Historical. The current direction is the logging/reliability design in `docs/plans/2025-12-29-logging-reliability-design.md`. An implementation plan will be created next; database/file-naming work is postponed until observability is improved.
+
 ## 1. Project goals & scope
 
 - Build a repeatable CLI workflow that (a) downloads audio from any YouTube video or playlist, (b) stores the audio under a deterministic path inside this repo, and (c) uploads the asset to ElevenLabs Scribe v1 for transcription.

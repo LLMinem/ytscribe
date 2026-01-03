@@ -4,7 +4,7 @@ Minimal CLI workflow for downloading YouTube audio (via yt-dlp) and transcribing
 
 ## Requirements
 
-- [uv](https://docs.astral.sh/uv/) (manages Python 3.12+ runtimes, deps, and scripts)
+- [uv](https://docs.astral.sh/uv/) (manages Python 3.14+ runtimes, deps, and scripts)
 - `ffmpeg` available on your `PATH` (yt-dlp uses it for muxing/transcoding)
 - ElevenLabs account + `ELEVENLABS_API_KEY`
 
@@ -41,6 +41,12 @@ Minimal CLI workflow for downloading YouTube audio (via yt-dlp) and transcribing
 
 ```bash
 uv run ytscribe "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+```
+
+You can also use the explicit subcommand:
+
+```bash
+uv run ytscribe fetch "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 ```
 
 **Download only (skip transcription):**
@@ -99,8 +105,7 @@ uv run ytscribe "VIDEO_URL" --language eng --no-tag-audio-events
 - **Markdown:** `data/transcripts/{channel}/{YYYYMMDD}_{video_id}.md`
   - Human-readable format
   - Full transcript text
-  - Detailed timeline with speakers
-  - Audio event annotations
+  - Audio event annotations (if enabled)
 
 ### Project Structure
 
@@ -154,11 +159,16 @@ just sync      # or: uv sync
 - Comprehensive error handling
 - Speaker diarization and audio event tagging
 
+## Current focus
+
+We are prioritizing logging, reliability, and responsiveness before starting the database phase. See `docs/plans/2025-12-29-logging-reliability-design.md` for the approved design and current direction.
+
 ## Troubleshooting
 
 **"Authentication failed" or 401 errors:**
 
 - Check your `.env` file has a valid `ELEVENLABS_API_KEY`
+- Environment variables override `.env` values, so exporting the key in your shell is fine
 - Get a key at: https://elevenlabs.io/app/settings/api-keys
 - Make sure there are no extra spaces or quotes around the key
 

@@ -7,11 +7,12 @@ This directory contains strategic planning and session handoff documentation for
 ```
 dev/
 ├── README.md              # This file
-└── active/                # Active development sessions
+├── active/                # Active development sessions
+└── archive/               # Completed phases
     └── phase-3-implementation/
-        ├── phase-3-plan.md        # Comprehensive strategic plan
-        ├── phase-3-context.md     # Session context and decisions
-        └── phase-3-tasks.md       # Task checklist with progress
+        ├── phase-3-plan.md        # Historical strategic plan
+        ├── phase-3-context.md     # Historical session context
+        └── phase-3-tasks.md       # Historical task checklist
 ```
 
 ## Documentation Files
@@ -74,9 +75,9 @@ Run the `/dev-docs-update` command to ensure all documentation is current:
 
 ## Current Active Work
 
-**Phase:** 3 - ElevenLabs Transcription Integration (COMPLETED)
-**Status:** ✅ Implemented, tested, and committed
-**Next:** Phase 4 - Database & File Naming
+**Phase:** Logging + Reliability (design approved)
+**Status:** Planning (implementation plan pending)
+**Next:** Create implementation plan from `docs/plans/2025-12-29-logging-reliability-design.md`, then execute
 
 ## Guidelines
 
@@ -130,7 +131,8 @@ git commit -m "feat: implement feature X + documentation"
 
 ## Related Documentation
 
-- `/docs/project-plan.md` - Original project planning
+- `/docs/plans/2025-12-29-logging-reliability-design.md` - Current approved design
+- `/docs/project-plan.md` - Original project planning (historical)
 - `/README.md` - User-facing documentation
 - `/AGENTS.md` - Agent-specific guidelines
 - GitHub Issues - Roadmap and feature tracking

@@ -3,31 +3,31 @@
 ## Project Structure & Required Context
 
 - Source lives in `src/ytscribe/`; downloaded media sits under `data/audio/` and transcripts under `data/transcripts/` (keep `.gitkeep` files).
-- Documentation root: `docs/` (especially `docs/project-plan.md` for current decisions). Read it **before** making changes, then run `git ls-files` and review the latest five commits (`git log -5 --oneline`) to understand history each session.
+- Documentation root: `docs/` (start with `docs/plans/2025-12-29-logging-reliability-design.md`; `docs/project-plan.md` is historical). Read the design doc **before** making changes, then run `git ls-files` and review the latest five commits (`git log -5 --oneline`) to understand history each session.
 - Config: `.env.example`, `pyproject.toml`, `uv.lock`, `.gitignore`, `.python-version`.
 
 ## Build, Test, and Development Commands
 
 **Use Just for all formatting and linting tasks.** Just is a command runner that simplifies common workflows.
 
-- `just format` — format all Python code (ruff) and Markdown files (mdformat). **Always run before committing.**
+- `just format` — format all Python code (ruff) and Markdown files (prettier). **Always run before committing.**
 - `just lint` — lint Python code with ruff to catch errors.
 - `just check` — run both format and lint in one command.
 - `just test` — run the pytest test suite (add tests under `tests/` when created).
 - `just sync` — install locked runtime + dev dependencies (alias for `uv sync`).
-- `uv run ytscribe fetch <url>` — placeholder entry point; adapt once CLI is implemented.
+- `uv run ytscribe <url>` — run the CLI (also supports `uv run ytscribe fetch <url>`).
 
 Direct commands (if needed):
 
 - `uv sync` — install dependencies.
 - `uv run ruff format .` / `uv run ruff check .` — format + lint Python.
-- `uv run mdformat .` — format Markdown files.
+- `prettier --write "**/*.md"` — format Markdown files.
 
 ## Coding Style & Naming Conventions
 
 - Python 3.14+, 4-space indentation, type hints encouraged.
 - Use Typer for CLI surfaces and favor small, composable modules (`downloader.py`, `transcriber.py`, etc.).
-- **Always run `just format` before committing** to format Python (ruff) and Markdown (mdformat) files. Markdown wraps at ~100 characters.
+- **Always run `just format` before committing** to format Python (ruff) and Markdown (prettier) files. Markdown wraps at ~100 characters.
 
 ## Testing Guidelines
 
